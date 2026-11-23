@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101b46">
+<title>SPR Digital Income Academy | Learn. Experiment. Earn.</title>
+<meta name="description" content="A bilingual practical learning initiative exploring digital income models, affiliate marketing, advertising and online skills.">
+<style>
+:root{
+ --navy:#101b46;--blue:#3157e8;--cyan:#35c7d4;--purple:#8157e8;
+ --orange:#ff9d4d;--pink:#ff6f9e;--ink:#17213c;--muted:#66718b;
+ --paper:#f5f7ff;--white:#fff;--line:#e7eaf5;--green:#16a879;
+ --shadow:0 18px 55px rgba(24,39,90,.12);--radius:24px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6}
+a{color:inherit}
+button{font:inherit;cursor:pointer}
+.wrap{width:min(1160px,calc(100% - 40px));margin:auto}
+.topbar{position:sticky;top:0;z-index:20;background:rgba(16,27,70,.94);backdrop-filter:blur(14px);color:#fff;border-bottom:1px solid rgba(255,255,255,.12)}
+.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;font-weight:900;letter-spacing:.4px}
+.brandmark{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,var(--cyan),var(--purple));font-size:20px;box-shadow:0 8px 24px #3157e855}
+.brand small{display:block;font-size:10px;letter-spacing:2px;color:#b9c7ff;font-weight:700}
+.navlinks{display:flex;align-items:center;gap:24px}
+.navlinks a{text-decoration:none;color:#e7ebff;font-size:14px;font-weight:650}
+.navlinks a:hover{color:var(--cyan)}
+.navright{display:flex;align-items:center;gap:10px}
+.langbtn,.menuBtn{border:1px solid #6471a6;background:#202e66;color:white;border-radius:999px;padding:9px 14px;font-weight:800}
+.menuBtn{display:none}
+.hero{position:relative;overflow:hidden;background:radial-gradient(circle at 78% 15%,#6955d9 0,transparent 32%),radial-gradient(circle at 8% 90%,#1c9cbb 0,transparent 35%),linear-gradient(120deg,#101b46 0%,#192c73 58%,#352c85 100%);color:#fff;padding:82px 0 92px}
+.hero:before,.hero:after{content:"";position:absolute;border:1px solid #ffffff20;border-radius:50%;width:420px;height:420px;right:-100px;top:-210px}
+.hero:after{width:300px;height:300px;right:190px;top:210px}
+.heroGrid{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:44px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:8px 13px;border-radius:999px;background:#ffffff17;border:1px solid #ffffff35;color:#d9f8ff;font-size:12px;font-weight:850;letter-spacing:1.2px;text-transform:uppercase}
+.dot{width:8px;height:8px;background:#6ff0c2;border-radius:50%;box-shadow:0 0 0 5px #6ff0c225}
+h1{font-size:clamp(42px,5.4vw,68px);line-height:1.04;letter-spacing:-2.5px;margin:22px 0 18px}
+.gradientText{background:linear-gradient(90deg,#69e2ec,#b7a2ff,#ffb57c);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{font-size:18px;color:#dce4ff;max-width:600px;margin:0 0 26px}
+.heroKannada{font-size:15px!important;color:#bfcaff!important}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:0;text-decoration:none;border-radius:14px;padding:14px 20px;font-weight:850;transition:.2s;min-height:50px}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.04)}
+.btnPrimary{background:linear-gradient(100deg,#48d2dc,#7a77ff);color:#111b45;box-shadow:0 12px 30px #2dbedb35}
+.btnGhost{border:1px solid #ffffff70;color:#fff;background:#ffffff12}
+.heroNote{font-size:12px!important;color:#aebce8!important;margin-top:18px!important}
+.heroVisual{position:relative;min-height:420px}
+.heroPhoto{position:absolute;inset:18px 20px 28px 32px;border-radius:34px;overflow:hidden;border:1px solid #ffffff55;box-shadow:0 30px 70px #050c2d70;transform:rotate(2deg)}
+.heroPhoto img{width:100%;height:100%;object-fit:cover;display:block}
+.photoOverlay{position:absolute;inset:0;background:linear-gradient(180deg,#111b4610,#111b46aa)}
+.floating{position:absolute;z-index:2;background:#fff;color:var(--ink);border-radius:18px;padding:14px 17px;box-shadow:var(--shadow);font-size:13px;font-weight:800}
+.floatOne{left:0;top:28px}.floatTwo{right:0;bottom:14px}
+.floatIcon{font-size:22px;margin-right:8px}
+.section{padding:76px 0}
+.sectionHead{text-align:center;max-width:720px;margin:0 auto 38px}
+.kicker{font-size:12px;font-weight:900;letter-spacing:1.5px;color:var(--blue);text-transform:uppercase}
+h2{font-size:clamp(29px,3.6vw,42px);line-height:1.15;letter-spacing:-1.2px;margin:10px 0 13px}
+.sectionHead p,.muted{color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.card{background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:0 8px 30px #18265b08;transition:.22s}
+.card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.card img{width:100%;height:165px;object-fit:cover;display:block}
+.cardBody{padding:20px}
+.cardIcon{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;font-size:21px;background:#edf1ff;margin-bottom:13px}
+.card h3{margin:0 0 7px;font-size:18px}
+.card p{font-size:14px;color:var(--muted);margin:0}
+.card .kn{display:block;color:#47516d;font-size:13px;margin-top:9px}
+.pill{display:inline-block;border-radius:999px;background:#eef2ff;color:#4359bd;padding:5px 9px;font-size:10px;font-weight:900;letter-spacing:.7px;margin-bottom:9px}
+.experiments{background:linear-gradient(135deg,#eef3ff,#f7f0ff)}
+.expGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.exp{background:#fff;border:1px solid var(--line);border-radius:20px;padding:23px;display:flex;gap:16px;align-items:flex-start}
+.expIcon{flex:0 0 52px;height:52px;border-radius:16px;display:grid;place-items:center;font-size:24px;background:linear-gradient(135deg,#e0faff,#eee8ff)}
+.exp h3{margin:0 0 5px}.exp p{margin:0;color:var(--muted);font-size:14px}
+.status{display:inline-block;margin-top:11px;font-size:11px;font-weight:850;color:#7a5b18;background:#fff4d9;padding:5px 9px;border-radius:999px}
+.howGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.step{background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px}
+.stepNum{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--blue),var(--purple));color:white;display:grid;place-items:center;font-weight:900;margin-bottom:15px}
+.step p{color:var(--muted);font-size:14px;margin-bottom:0}
+.audience{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:center}
+.audienceImg{height:390px;border-radius:28px;overflow:hidden;box-shadow:var(--shadow)}
+.audienceImg img{width:100%;height:100%;object-fit:cover}
+.audienceList{display:grid;gap:12px;margin-top:22px}
+.audienceItem{background:white;border:1px solid var(--line);padding:14px 16px;border-radius:14px;font-weight:750}
+.audienceItem span{color:var(--muted);font-size:13px;display:block;font-weight:500}
+.calculator{background:linear-gradient(120deg,#121e50,#332b83);color:#fff;border-radius:28px;padding:32px;display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+.calculator p{color:#d1d9ff}
+.calcControls{background:#ffffff12;border:1px solid #ffffff25;padding:20px;border-radius:20px}
+.calcControls label{display:block;font-size:13px;color:#dce4ff;margin:12px 0 5px}
+.calcControls input{width:100%;accent-color:#5fe0e4}
+.calcValue{font-size:30px;font-weight:900;color:#8beaf0}
+.calcDisclaimer{font-size:11px!important;color:#c1c9ec!important;margin-bottom:0}
+.faq{max-width:820px;margin:auto}
+details{background:white;border:1px solid var(--line);border-radius:15px;padding:17px 20px;margin:10px 0}
+summary{font-weight:800;cursor:pointer}
+details p{color:var(--muted);font-size:14px;margin-bottom:0}
+.cta{background:linear-gradient(120deg,#3157e8,#8157e8);border-radius:28px;padding:42px;color:white;text-align:center}
+.cta p{color:#e5e8ff}
+.cta .btn{background:white;color:#263b9b}
+.disclosure{font-size:12px;color:#6e7890;background:#edf0f8;border-radius:14px;padding:16px;margin-top:20px}
+footer{background:#0e173d;color:#d9e0ff;padding:36px 0;text-align:center}
+footer p{font-size:12px;color:#aeb9e2;margin:5px}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#15204f;color:white;padding:12px 18px;border-radius:12px;box-shadow:var(--shadow);display:none;z-index:40;font-size:13px}
+@media(max-width:900px){.cards{grid-template-columns:repeat(2,1fr)}.heroGrid{grid-template-columns:1fr}.heroVisual{min-height:350px}.heroPhoto{inset:10px 25px 25px}.navlinks{display:none;position:absolute;top:76px;left:0;right:0;background:#101b46;padding:18px 24px;flex-direction:column;align-items:flex-start}.navlinks.open{display:flex}.menuBtn{display:block}.calculator{grid-template-columns:1fr}}
+@media(max-width:600px){.wrap{width:min(100% - 28px,1160px)}.nav{height:68px}.brand{font-size:13px}.brandmark{width:38px;height:38px}.hero{padding:58px 0 65px}.heroVisual{min-height:280px}.heroPhoto{inset:10px 10px 15px}.floatOne{top:0}.floatTwo{bottom:0}.section{padding:55px 0}.cards,.expGrid,.howGrid,.audience{grid-template-columns:1fr}.card img{height:190px}.audienceImg{height:270px}.calculator{padding:23px}.cta{padding:30px 20px}.navlinks{top:68px}}
+</style>
+</head>
+<body>
+<div class="topbar">
+ <div class="wrap nav">
+  <a class="brand" href="#home"><span class="brandmark">SPR</span><span>SPR DIGITAL INCOME ACADEMY<small>SPR AI EDUTECH</small></span></a>
+  <nav class="navlinks" id="navlinks">
+   <a href="#learn" data-en="What you'll learn" data-kn="ಏನು ಕಲಿಯುವಿರಿ">What you'll learn</a>
+   <a href="#experiments" data-en="Experiments" data-kn="ಪ್ರಯೋಗಗಳು">Experiments</a>
+   <a href="#audience" data-en="Who it's for" data-kn="ಯಾರಿಗಾಗಿ">Who it's for</a>
+   <a href="#faq" data-en="FAQ" data-kn="ಪ್ರಶ್ನೋತ್ತರ">FAQ</a>
+   <a href="#publisher" data-en="Publisher Ads" data-kn="ಪ್ರಕಾಶಕ ಜಾಹೀರಾತು">Publisher Ads</a>
+   <a href="#contact" data-en="Contact" data-kn="ಸಂಪರ್ಕಿಸಿ">Contact</a>
+  </nav>
+  <div class="navright">
+   <button class="langbtn" id="langBtn" aria-label="Switch language">ಕನ್ನಡ</button>
+   <button class="menuBtn" id="menuBtn" aria-label="Open menu">☰</button>
+  </div>
+ </div>
+</div>
+
+<header class="hero" id="home">
+ <div class="wrap heroGrid">
+  <div>
+   <div class="eyebrow"><span class="dot"></span><span data-en="A practical digital learning initiative" data-kn="ಪ್ರಾಯೋಗಿಕ ಡಿಜಿಟಲ್ ಕಲಿಕಾ ಅಭಿಯಾನ">A practical digital learning initiative</span></div>
+   <h1 data-en="Learn digital skills. <span class='gradientText'>Explore income.</span>" data-kn="ಡಿಜಿಟಲ್ ಕೌಶಲ್ಯ ಕಲಿಯಿರಿ. <span class='gradientText'>ಆದಾಯದ ಅವಕಾಶ ಅರಿಯಿರಿ.</span>">Learn digital skills. <span class="gradientText">Explore income.</span></h1>
+   <p data-en="We test real online platforms, document what happens and teach practical digital income models — without fake promises." data-kn="ನಾವು ನೈಜ ಆನ್‌ಲೈನ್ ವೇದಿಕೆಗಳನ್ನು ಪರೀಕ್ಷಿಸಿ, ಫಲಿತಾಂಶಗಳನ್ನು ದಾಖಲಿಸಿ, ಪ್ರಾಯೋಗಿಕ ಡಿಜಿಟಲ್ ಆದಾಯ ಮಾದರಿಗಳನ್ನು ಕಲಿಸುತ್ತೇವೆ — ಸುಳ್ಳು ಭರವಸೆಗಳಿಲ್ಲದೆ.">We test real online platforms, document what happens and teach practical digital income models — without fake promises.</p>
+   <p class="heroKannada" data-en="ಕಲಿಯಿರಿ • ಪ್ರಯೋಗಿಸಿ • ಸಂಪಾದಿಸಿ" data-kn="ಕಲಿಯಿರಿ • ಪ್ರಯೋಗಿಸಿ • ಸಂಪಾದಿಸಿ">ಕಲಿಯಿರಿ • ಪ್ರಯೋಗಿಸಿ • ಸಂಪಾದಿಸಿ</p>
+   <div class="actions">
+    <a class="btn btnPrimary" href="#experiments" data-en="Explore live experiments ↓" data-kn="ನೈಜ ಪ್ರಯೋಗಗಳನ್ನು ನೋಡಿ ↓">Explore live experiments ↓</a>
+    <a class="btn btnGhost" href="#learn" data-en="See what you'll learn" data-kn="ಕಲಿಕೆಯ ವಿಷಯಗಳನ್ನು ನೋಡಿ">See what you'll learn</a>
+    <a class="btn btnGhost" href="https://wa.me/917022070287?text=Hello%20SPR%20Digital%20Income%20Academy.%20I%20am%20interested%20in%20learning%20more." target="_blank" rel="noopener" data-en="WhatsApp us" data-kn="ವಾಟ್ಸಾಪ್ ಮೂಲಕ ಸಂಪರ್ಕಿಸಿ">WhatsApp us</a>
+   </div>
+   <p class="heroNote" data-en="Educational initiative • No guaranteed income • No joining fee required to view this page" data-kn="ಶೈಕ್ಷಣಿಕ ಅಭಿಯಾನ • ಆದಾಯದ ಖಾತರಿ ಇಲ್ಲ • ಈ ಪುಟ ವೀಕ್ಷಿಸಲು ಯಾವುದೇ ಶುಲ್ಕವಿಲ್ಲ">Educational initiative • No guaranteed income • No joining fee required to view this page</p>
+  </div>
+  <div class="heroVisual">
+   <div class="heroPhoto"><img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1100&q=85" alt="Young adults collaborating and learning digital skills"><div class="photoOverlay"></div></div>
+   <div class="floating floatOne"><span class="floatIcon">💡</span>Learn by doing</div>
+   <div class="floating floatTwo"><span class="floatIcon">📊</span>Track real results</div>
+  </div>
+ </div>
+</header>
+
+<section class="section" aria-label="Advertisement" style="padding:22px 0 0">
+ <div class="wrap">
+  <div class="adlabel" style="font-size:11px;letter-spacing:1.2px;color:#7a849a;text-align:center;margin-bottom:8px">ADVERTISEMENT</div>
+  <!-- ADSTERRA BANNER SLOT 1: Insert the complete approved Adsterra banner code here. -->
+  <div class="ad-placeholder" style="min-height:90px;border:1px dashed #b8c3d3;border-radius:16px;background:#fff;display:grid;place-items:center;text-align:center;padding:16px;color:#77839a">
+   <div><strong>Publisher Advertisement</strong><br><small>Adsterra banner placement — code will be added after approval</small></div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="learn">
+ <div class="wrap">
+  <div class="sectionHead">
+   <div class="kicker">PRACTICAL LEARNING / ಪ್ರಾಯೋಗಿಕ ಕಲಿಕೆ</div>
+   <h2 data-en="Skills you can put into practice" data-kn="ನೀವು ಕಾರ್ಯರೂಪಕ್ಕೆ ತರಬಹುದಾದ ಕೌಶಲ್ಯಗಳು">Skills you can put into practice</h2>
+   <p data-en="Understand how digital platforms work before deciding whether an opportunity is right for you." data-kn="ಯಾವುದೇ ಅವಕಾಶವನ್ನು ಆಯ್ಕೆಮಾಡುವ ಮೊದಲು ಡಿಜಿಟಲ್ ವೇದಿಕೆಗಳು ಹೇಗೆ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತವೆ ಎಂಬುದನ್ನು ತಿಳಿಯಿರಿ.">Understand how digital platforms work before deciding whether an opportunity is right for you.</p>
+  </div>
+  <div class="cards">
+   <article class="card"><img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=700&q=80" alt="Online shopping and affiliate marketing"><div class="cardBody"><div class="cardIcon">🔗</div><h3 data-en="Affiliate marketing" data-kn="ಅಫಿಲಿಯೇಟ್ ಮಾರ್ಕೆಟಿಂಗ್">Affiliate marketing</h3><p data-en="Learn how referral links, approved purchases and commissions work." data-kn="ರೆಫರಲ್ ಲಿಂಕ್‌ಗಳು, ಅರ್ಹ ಖರೀದಿ ಮತ್ತು ಕಮಿಷನ್ ಹೇಗೆ ಕೆಲಸ ಮಾಡುತ್ತವೆ ಎಂದು ತಿಳಿಯಿರಿ.">Learn how referral links, approved purchases and commissions work.</p><span class="kn">ಉತ್ಪನ್ನ ಶಿಫಾರಸುಗಳಿಂದ ಕಮಿಷನ್ ಮಾದರಿ</span></div></article>
+   <article class="card"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=700&q=80" alt="Analytics dashboard on laptop"><div class="cardBody"><div class="cardIcon">📈</div><h3 data-en="Digital advertising" data-kn="ಡಿಜಿಟಲ್ ಜಾಹೀರಾತು">Digital advertising</h3><p data-en="Understand publisher networks, ad formats, CPM and traffic quality." data-kn="ಪಬ್ಲಿಷರ್ ನೆಟ್‌ವರ್ಕ್, ಜಾಹೀರಾತು ಮಾದರಿ, CPM ಮತ್ತು ಟ್ರಾಫಿಕ್ ಗುಣಮಟ್ಟ ತಿಳಿಯಿರಿ.">Understand publisher networks, ad formats, CPM and traffic quality.</p><span class="kn">ಜಾಹೀರಾತು ಆದಾಯದ ಮಾದರಿಗಳು</span></div></article>
+   <article class="card"><img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=700&q=80" alt="Team planning a digital business"><div class="cardBody"><div class="cardIcon">🎯</div><h3 data-en="Social media campaigns" data-kn="ಸಾಮಾಜಿಕ ಜಾಲತಾಣ ಅಭಿಯಾನ">Social media campaigns</h3><p data-en="Plan content, reach the right audience and measure campaign results." data-kn="ವಿಷಯ ರೂಪಿಸಿ, ಸರಿಯಾದ ಪ್ರೇಕ್ಷಕರನ್ನು ತಲುಪಿ, ಅಭಿಯಾನದ ಫಲಿತಾಂಶ ಅಳೆಯಿರಿ.">Plan content, reach the right audience and measure campaign results.</p><span class="kn">ವಿಷಯ ಮತ್ತು ಅಭಿಯಾನ ನಿರ್ವಹಣೆ</span></div></article>
+   <article class="card"><img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=700&q=80" alt="People learning together"><div class="cardBody"><div class="cardIcon">🛡️</div><h3 data-en="Online safety & verification" data-kn="ಆನ್‌ಲೈನ್ ಸುರಕ್ಷತೆ ಮತ್ತು ಪರಿಶೀಲನೆ">Online safety & verification</h3><p data-en="Spot misleading offers, check platform rules and protect your money." data-kn="ತಪ್ಪು ಆಫರ್‌ಗಳನ್ನು ಗುರುತಿಸಿ, ನಿಯಮ ಪರಿಶೀಲಿಸಿ, ನಿಮ್ಮ ಹಣವನ್ನು ಸುರಕ್ಷಿತವಾಗಿಡಿ.">Spot misleading offers, check platform rules and protect your money.</p><span class="kn">ವಂಚನೆ ತಡೆ ಮತ್ತು ಸುರಕ್ಷಿತ ಬಳಕೆ</span></div></article>
+  </div>
+ </div>
+</section>
+
+<section class="section experiments" id="experiments">
+ <div class="wrap">
+  <div class="sectionHead">
+   <div class="kicker">LIVE RESEARCH / ನೈಜ ಸಂಶೋಧನೆ</div>
+   <h2 data-en="We experiment before we recommend" data-kn="ಶಿಫಾರಸು ಮಾಡುವ ಮೊದಲು ನಾವು ಪ್ರಯೋಗಿಸುತ್ತೇವೆ">We experiment before we recommend</h2>
+   <p data-en="Follow our progress. Each opportunity is reviewed for eligibility, safety, terms and actual results." data-kn="ನಮ್ಮ ಪ್ರಗತಿಯನ್ನು ಗಮನಿಸಿ. ಪ್ರತಿಯೊಂದು ಅವಕಾಶವನ್ನೂ ಅರ್ಹತೆ, ಸುರಕ್ಷತೆ, ನಿಯಮಗಳು ಮತ್ತು ನೈಜ ಫಲಿತಾಂಶಗಳ ಆಧಾರದ ಮೇಲೆ ಪರಿಶೀಲಿಸುತ್ತೇವೆ.">Follow our progress. Each opportunity is reviewed for eligibility, safety, terms and actual results.</p>
+  </div>
+  <div class="expGrid">
+   <div class="exp"><div class="expIcon">📣</div><div><span class="pill">EXPERIMENT 01</span><h3>Publisher advertising / ಪಬ್ಲಿಷರ್ ಜಾಹೀರಾತು</h3><p data-en="Testing advertising networks, Smartlinks, visitor experience and verified publisher earnings." data-kn="ಜಾಹೀರಾತು ನೆಟ್‌ವರ್ಕ್, ಸ್ಮಾರ್ಟ್‌ಲಿಂಕ್, ಬಳಕೆದಾರರ ಅನುಭವ ಮತ್ತು ಪರಿಶೀಲಿಸಿದ ಆದಾಯವನ್ನು ಪರೀಕ್ಷಿಸುತ್ತಿದ್ದೇವೆ.">Testing advertising networks, Smartlinks, visitor experience and verified publisher earnings.</p><span class="status">Testing • Public links not enabled</span>
+     <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:14px">
+      <a class="btn btnPrimary" href="https://asiafilm.org/4/6bd18bc348921d992ff9ed0627731007" target="_blank" rel="nofollow sponsored noopener">Smartlink 1 ↗</a>
+      <a class="btn btnPrimary" href="https://asiafilm.org/4/700423d032897ef4e66cdbfbd075c86b" target="_blank" rel="nofollow sponsored noopener">Smartlink 2 ↗</a>
+     </div>
+    </div></div>
+   <div class="exp"><div class="expIcon">🛍️</div><div><span class="pill">EXPERIMENT 02</span><h3>Affiliate programmes / ಅಫಿಲಿಯೇಟ್ ಕಾರ್ಯಕ್ರಮಗಳು</h3><p data-en="Reviewing Indian affiliate networks, social traffic rules, commission terms and payouts." data-kn="ಭಾರತೀಯ ಅಫಿಲಿಯೇಟ್ ನೆಟ್‌ವರ್ಕ್, ಸಾಮಾಜಿಕ ಟ್ರಾಫಿಕ್ ನಿಯಮ, ಕಮಿಷನ್ ಮತ್ತು ಪಾವತಿಗಳನ್ನು ಪರಿಶೀಲಿಸುತ್ತಿದ್ದೇವೆ.">Reviewing Indian affiliate networks, social traffic rules, commission terms and payouts.</p><span class="status">Researching</span></div></div>
+   <div class="exp"><div class="expIcon">🧩</div><div><span class="pill">EXPERIMENT 03</span><h3>CPA / CPL models</h3><p data-en="Understanding approved registrations, leads and other qualifying actions." data-kn="ಅನುಮೋದಿತ ನೋಂದಣಿ, ಲೀಡ್ ಮತ್ತು ಅರ್ಹ ಕಾರ್ಯಗಳ ಆದಾಯ ಮಾದರಿಗಳನ್ನು ತಿಳಿಯುವುದು.">Understanding approved registrations, leads and other qualifying actions.</p><span class="status">Researching</span></div></div>
+   <div class="exp"><div class="expIcon">💻</div><div><span class="pill">EXPERIMENT 04</span><h3>Digital services / ಡಿಜಿಟಲ್ ಸೇವೆಗಳು</h3><p data-en="Exploring practical services people can learn and offer to real customers." data-kn="ಕಲಿತು ನೈಜ ಗ್ರಾಹಕರಿಗೆ ಒದಗಿಸಬಹುದಾದ ಪ್ರಾಯೋಗಿಕ ಡಿಜಿಟಲ್ ಸೇವೆಗಳ ಅನ್ವೇಷಣೆ.">Exploring practical services people can learn and offer to real customers.</p><span class="status">Planned</span></div></div>
+  </div>
+ </div>
+</section>
+
+<section class="section">
+ <div class="wrap">
+  <div class="sectionHead"><div class="kicker">THE METHOD / ನಮ್ಮ ವಿಧಾನ</div><h2 data-en="A transparent, step-by-step approach" data-kn="ಪಾರದರ್ಶಕ ಹಂತ-ಹಂತದ ವಿಧಾನ">A transparent, step-by-step approach</h2></div>
+  <div class="howGrid">
+   <div class="step"><div class="stepNum">01</div><h3 data-en="Research" data-kn="ಸಂಶೋಧನೆ">Research</h3><p data-en="Check the company, eligibility, terms, payment rules and risks." data-kn="ಸಂಸ್ಥೆ, ಅರ್ಹತೆ, ನಿಯಮ, ಪಾವತಿ ವಿಧಾನ ಮತ್ತು ಅಪಾಯಗಳನ್ನು ಪರಿಶೀಲಿಸಿ.">Check the company, eligibility, terms, payment rules and risks.</p></div>
+   <div class="step"><div class="stepNum">02</div><h3 data-en="Test" data-kn="ಪರೀಕ್ಷೆ">Test</h3><p data-en="Run a small, compliant experiment and record clicks, conversions, costs and time." data-kn="ಸಣ್ಣ, ನಿಯಮಾನುಸಾರ ಪ್ರಯೋಗ ನಡೆಸಿ ಕ್ಲಿಕ್, ಪರಿವರ್ತನೆ, ವೆಚ್ಚ ಮತ್ತು ಸಮಯ ದಾಖಲಿಸಿ.">Run a small, compliant experiment and record clicks, conversions, costs and time.</p></div>
+   <div class="step"><div class="stepNum">03</div><h3 data-en="Teach" data-kn="ಕಲಿಸಿ">Teach</h3><p data-en="Share verified findings, limitations and practical steps so learners can make informed choices." data-kn="ಪರಿಶೀಲಿಸಿದ ಫಲಿತಾಂಶ, ಮಿತಿಗಳು ಮತ್ತು ಹಂತಗಳನ್ನು ಹಂಚಿ ಕಲಿಯುವವರಿಗೆ ತಿಳಿದ ನಿರ್ಧಾರಕ್ಕೆ ಸಹಾಯ ಮಾಡಿ.">Share verified findings, limitations and practical steps so learners can make informed choices.</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="audience">
+ <div class="wrap audience">
+  <div class="audienceImg"><img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1000&q=85" alt="Learners collaborating with a laptop"></div>
+  <div>
+   <div class="kicker">WHO CAN LEARN / ಯಾರು ಕಲಿಯಬಹುದು</div>
+   <h2 data-en="Digital skills are for everyone" data-kn="ಡಿಜಿಟಲ್ ಕೌಶಲ್ಯ ಎಲ್ಲರಿಗೂ">Digital skills are for everyone</h2>
+   <p class="muted" data-en="Start with curiosity. Build skills at your own pace. Participation in any earning platform is optional and subject to its eligibility rules." data-kn="ಕುತೂಹಲದಿಂದ ಪ್ರಾರಂಭಿಸಿ. ನಿಮ್ಮ ವೇಗದಲ್ಲಿ ಕೌಶಲ್ಯ ಬೆಳೆಸಿಕೊಳ್ಳಿ. ಆದಾಯ ವೇದಿಕೆಗಳಲ್ಲಿ ಭಾಗವಹಿಸುವುದು ಐಚ್ಛಿಕ ಮತ್ತು ಅವುಗಳ ಅರ್ಹತಾ ನಿಯಮಗಳಿಗೆ ಒಳಪಟ್ಟಿರುತ್ತದೆ.">Start with curiosity. Build skills at your own pace. Participation in any earning platform is optional and subject to its eligibility rules.</p>
+   <div class="audienceList">
+    <div class="audienceItem">🎓 Degree students <span>ಪದವಿ ವಿದ್ಯಾರ್ಥಿಗಳು — ಡಿಜಿಟಲ್ ಕೌಶಲ್ಯ ಮತ್ತು ಪ್ರಾಯೋಗಿಕ ಯೋಜನೆಗಳು</span></div>
+    <div class="audienceItem">🏡 Homemakers <span>ಗೃಹಿಣಿಯರು — ಮನೆಯಲ್ಲಿಯೇ ಕಲಿಯಬಹುದಾದ ಡಿಜಿಟಲ್ ಕೌಶಲ್ಯಗಳು</span></div>
+    <div class="audienceItem">🌱 Rural youth <span>ಗ್ರಾಮೀಣ ಯುವಜನರು — ಆನ್‌ಲೈನ್ ಉದ್ಯಮಶೀಲತೆಯ ಪರಿಚಯ</span></div>
+    <div class="audienceItem">🚀 Beginners <span>ಆರಂಭಿಕರು — ಮೂಲಭೂತ ಹಂತದಿಂದ ಕಲಿಕೆ</span></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="section">
+ <div class="wrap">
+  <div class="calculator">
+   <div>
+    <div class="kicker" style="color:#8beaf0">LEARNING TOOL / ಕಲಿಕಾ ಸಾಧನ</div>
+    <h2 data-en="Understand the numbers" data-kn="ಆದಾಯದ ಲೆಕ್ಕಾಚಾರವನ್ನು ತಿಳಿಯಿರಿ">Understand the numbers</h2>
+    <p data-en="Try this illustrative calculator to see how clicks and conversion rates affect an affiliate campaign. It is not an income prediction." data-kn="ಕ್ಲಿಕ್ ಮತ್ತು ಪರಿವರ್ತನೆ ಪ್ರಮಾಣವು ಅಫಿಲಿಯೇಟ್ ಅಭಿಯಾನದ ಮೇಲೆ ಹೇಗೆ ಪರಿಣಾಮ ಬೀರುತ್ತದೆ ಎಂದು ಈ ಉದಾಹರಣೆಯ ಕ್ಯಾಲ್ಕುಲೇಟರ್ ಮೂಲಕ ತಿಳಿಯಿರಿ. ಇದು ಆದಾಯದ ಮುನ್ಸೂಚನೆಯಲ್ಲ.">Try this illustrative calculator to see how clicks and conversion rates affect an affiliate campaign. It is not an income prediction.</p>
+   </div>
+   <div class="calcControls">
+    <label for="clicks">Monthly link clicks / ತಿಂಗಳ ಕ್ಲಿಕ್‌ಗಳು: <strong id="clicksOut">500</strong></label>
+    <input id="clicks" type="range" min="50" max="5000" step="50" value="500">
+    <label for="rate">Illustrative conversion rate / ಪರಿವರ್ತನೆ ಪ್ರಮಾಣ: <strong id="rateOut">2%</strong></label>
+    <input id="rate" type="range" min="0" max="10" step=".5" value="2">
+    <label for="commission">Example commission per conversion / ಉದಾಹರಣೆಯ ಕಮಿಷನ್ (₹)</label>
+    <input id="commission" type="range" min="10" max="1000" step="10" value="100">
+    <div style="margin-top:18px;color:#dce4ff;font-size:13px">Illustrative gross commission / ಉದಾಹರಣೆಯ ಒಟ್ಟು ಕಮಿಷನ್</div>
+    <div class="calcValue" id="result">₹1,000</div>
+    <p class="calcDisclaimer">Example only. Actual commissions may be zero, rejected, delayed or reversed. Costs and taxes are not included. No earnings are promised.</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+
+<section class="section" id="publisher" style="background:linear-gradient(135deg,#eef3ff,#f7f0ff)">
+ <div class="wrap">
+  <div class="sectionHead">
+   <div class="kicker">PUBLISHER ADVERTISING / ಪಬ್ಲಿಷರ್ ಜಾಹೀರಾತು</div>
+   <h2 data-en="Explore our advertising experiments" data-kn="ನಮ್ಮ ಜಾಹೀರಾತು ಪ್ರಯೋಗಗಳನ್ನು ವೀಕ್ಷಿಸಿ">Explore our advertising experiments</h2>
+   <p data-en="We are testing publisher advertising formats and documenting the visitor experience, traffic quality and actual results." data-kn="ಪಬ್ಲಿಷರ್ ಜಾಹೀರಾತು ಮಾದರಿಗಳು, ಬಳಕೆದಾರರ ಅನುಭವ, ಟ್ರಾಫಿಕ್ ಗುಣಮಟ್ಟ ಮತ್ತು ನೈಜ ಫಲಿತಾಂಶಗಳನ್ನು ಪರೀಕ್ಷಿಸುತ್ತಿದ್ದೇವೆ.">We are testing publisher advertising formats and documenting the visitor experience, traffic quality and actual results.</p>
+  </div>
+  <p data-en="The two test Smartlinks are placed directly under Experiment 01 in the Live Research section above." data-kn="ಎರಡು ಪರೀಕ್ಷಾ ಸ್ಮಾರ್ಟ್‌ಲಿಂಕ್‌ಗಳನ್ನು ಮೇಲಿನ ನೈಜ ಸಂಶೋಧನೆ ವಿಭಾಗದ ಪ್ರಯೋಗ 01 ಅಡಿಯಲ್ಲಿ ಸೇರಿಸಲಾಗಿದೆ.">The two test Smartlinks are placed directly under Experiment 01 in the Live Research section above.</p>
+  <div class="disclosure" style="margin-top:20px">
+   <strong>External advertising notice:</strong> These Smartlinks may redirect to third-party advertisers or offers, and the destination may change. SPR does not control those websites. Do not download unexpected files, share sensitive information, make payments, or proceed with offers you cannot independently verify. These links are included for publisher testing, not as guaranteed earning opportunities.
+  </div>
+ </div>
+</section>
+
+<section class="section" aria-label="Advertisement" style="padding-top:12px">
+ <div class="wrap">
+  <div class="adlabel" style="font-size:11px;letter-spacing:1.2px;color:#7a849a;text-align:center;margin-bottom:8px">ADVERTISEMENT</div>
+  <!-- ADSTERRA BANNER SLOT 2: Insert a second approved Adsterra banner code here if required. -->
+  <div class="ad-placeholder" style="min-height:250px;border:1px dashed #b8c3d3;border-radius:16px;background:#fff;display:grid;place-items:center;text-align:center;padding:16px;color:#77839a">
+   <div><strong>Publisher Advertisement</strong><br><small>Adsterra responsive / 300 × 250 placement — code will be added after approval</small></div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="contact" style="padding-top:0">
+ <div class="wrap">
+  <div class="cta">
+   <div class="kicker" style="color:#c8faff">SPR AI EDUTECH • HOSADURGA</div>
+   <h2 data-en="Interested in learning with us?" data-kn="ನಮ್ಮೊಂದಿಗೆ ಕಲಿಯಲು ಆಸಕ್ತಿಯಿದೆಯೇ?">Interested in learning with us?</h2>
+   <p data-en="Contact SPR Digital Income Academy for information about practical digital experiments and learning opportunities." data-kn="ಪ್ರಾಯೋಗಿಕ ಡಿಜಿಟಲ್ ಪ್ರಯೋಗಗಳು ಮತ್ತು ಕಲಿಕಾ ಅವಕಾಶಗಳ ಮಾಹಿತಿಗಾಗಿ SPR Digital Income Academy ಅನ್ನು ಸಂಪರ್ಕಿಸಿ.">Contact SPR Digital Income Academy for information about practical digital experiments and learning opportunities.</p>
+   <a class="btn" href="https://wa.me/917022070287?text=Hello%20SPR%20Digital%20Income%20Academy.%20Please%20share%20more%20details." target="_blank" rel="noopener">WhatsApp: 7022070287</a>
+   <p style="font-size:12px;color:#e5e8ff;margin-top:12px">ಕಲಿಯಿರಿ • ಪ್ರಯೋಗಿಸಿ • ಸಂಪಾದಿಸಿ</p>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="faq">
+ <div class="wrap">
+  <div class="sectionHead"><div class="kicker">QUESTIONS / ಪ್ರಶ್ನೆಗಳು</div><h2 data-en="Frequently asked questions" data-kn="ಸಾಮಾನ್ಯ ಪ್ರಶ್ನೆಗಳು">Frequently asked questions</h2></div>
+  <div class="faq">
+   <details><summary data-en="Is income guaranteed?" data-kn="ಆದಾಯ ಖಚಿತವೇ?">Is income guaranteed?</summary><p data-en="No. Online income is uncertain and depends on skills, demand, platform eligibility, audience, conversions and expenses. We do not promise earnings." data-kn="ಇಲ್ಲ. ಆನ್‌ಲೈನ್ ಆದಾಯ ಖಚಿತವಲ್ಲ. ಕೌಶಲ್ಯ, ಬೇಡಿಕೆ, ವೇದಿಕೆಯ ಅರ್ಹತೆ, ಪ್ರೇಕ್ಷಕರು, ಪರಿವರ್ತನೆ ಮತ್ತು ವೆಚ್ಚಗಳ ಮೇಲೆ ಅವಲಂಬಿತವಾಗಿರುತ್ತದೆ. ನಾವು ಆದಾಯದ ಭರವಸೆ ನೀಡುವುದಿಲ್ಲ.">No. Online income is uncertain and depends on skills, demand, platform eligibility, audience, conversions and expenses. We do not promise earnings.</p></details>
+   <details><summary data-en="Do I need to pay to learn from this page?" data-kn="ಈ ಪುಟದಿಂದ ಕಲಿಯಲು ಹಣ ಪಾವತಿಸಬೇಕೇ?">Do I need to pay to learn from this page?</summary><p data-en="No payment is required to read this page. Any future course fees, if introduced, will be clearly disclosed in advance." data-kn="ಈ ಪುಟ ಓದಲು ಯಾವುದೇ ಶುಲ್ಕವಿಲ್ಲ. ಭವಿಷ್ಯದಲ್ಲಿ ತರಬೇತಿ ಶುಲ್ಕ ಇದ್ದರೆ ಮುಂಚಿತವಾಗಿ ಸ್ಪಷ್ಟಪಡಿಸಲಾಗುತ್ತದೆ.">No payment is required to read this page. Any future course fees, if introduced, will be clearly disclosed in advance.</p></details>
+   <details><summary data-en="Can students and homemakers participate?" data-kn="ವಿದ್ಯಾರ್ಥಿಗಳು ಮತ್ತು ಗೃಹಿಣಿಯರು ಭಾಗವಹಿಸಬಹುದೇ?">Can students and homemakers participate?</summary><p data-en="They can learn the concepts. Joining third-party platforms or monetization programmes depends on age, identity, location and each platform's terms. Minors should not create accounts where adult eligibility is required." data-kn="ಅವರು ವಿಷಯಗಳನ್ನು ಕಲಿಯಬಹುದು. ಮೂರನೇ ವ್ಯಕ್ತಿಯ ವೇದಿಕೆಗಳಲ್ಲಿ ನೋಂದಣಿ ವಯಸ್ಸು, ಗುರುತು, ಸ್ಥಳ ಮತ್ತು ವೇದಿಕೆಯ ನಿಯಮಗಳಿಗೆ ಒಳಪಟ್ಟಿರುತ್ತದೆ. ವಯಸ್ಕರ ಅರ್ಹತೆ ಅಗತ್ಯವಿರುವ ಖಾತೆಗಳನ್ನು ಅಪ್ರಾಪ್ತರು ತೆರೆಯಬಾರದು.">They can learn the concepts. Joining third-party platforms or monetization programmes depends on age, identity, location and each platform's terms. Minors should not create accounts where adult eligibility is required.</p></details>
+   <details><summary data-en="Does SPR recommend every platform it tests?" data-kn="SPR ಪರೀಕ್ಷಿಸುವ ಪ್ರತಿಯೊಂದು ವೇದಿಕೆಯನ್ನು ಶಿಫಾರಸು ಮಾಡುತ್ತದೆಯೇ?">Does SPR recommend every platform it tests?</summary><p data-en="No. Testing is not an endorsement. We will share concerns, limitations and negative results as well as positive findings." data-kn="ಇಲ್ಲ. ಪರೀಕ್ಷಿಸುವುದೇ ಶಿಫಾರಸು ಎಂದರ್ಥವಲ್ಲ. ಒಳ್ಳೆಯ ಫಲಿತಾಂಶಗಳ ಜೊತೆಗೆ ಸಮಸ್ಯೆ, ಮಿತಿ ಮತ್ತು ನಕಾರಾತ್ಮಕ ಫಲಿತಾಂಶಗಳನ್ನೂ ಹಂಚಿಕೊಳ್ಳುತ್ತೇವೆ.">No. Testing is not an endorsement. We will share concerns, limitations and negative results as well as positive findings.</p></details>
+  </div>
+ </div>
+</section>
+
+<section class="section" style="padding-top:0">
+ <div class="wrap">
+  <div class="cta">
+   <div class="kicker" style="color:#c8faff">SPR AI EDUTECH • HOSADURGA</div>
+   <h2 data-en="Learn first. Decide with evidence." data-kn="ಮೊದಲು ಕಲಿಯಿರಿ. ಸಾಕ್ಷ್ಯದ ಆಧಾರದ ಮೇಲೆ ನಿರ್ಧರಿಸಿ.">Learn first. Decide with evidence.</h2>
+   <p data-en="Follow our practical experiments and learn how digital income models really work." data-kn="ನಮ್ಮ ಪ್ರಾಯೋಗಿಕ ಪ್ರಯೋಗಗಳನ್ನು ಅನುಸರಿಸಿ. ಡಿಜಿಟಲ್ ಆದಾಯ ಮಾದರಿಗಳು ನಿಜವಾಗಿ ಹೇಗೆ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತವೆ ಎಂದು ತಿಳಿಯಿರಿ.">Follow our practical experiments and learn how digital income models really work.</p>
+   <a class="btn" href="#experiments" data-en="View experiments" data-kn="ಪ್ರಯೋಗಗಳನ್ನು ವೀಕ್ಷಿಸಿ">View experiments</a>
+  </div>
+  <div class="disclosure"><strong>Transparency & advertising disclosure:</strong> SPR may test third-party advertising and affiliate platforms. Some links, when activated, may be monetized and may generate a commission or publisher revenue for SPR at no additional cost to the visitor. External websites have their own terms, content and privacy practices. We do not guarantee income, endorse every advertiser or provide investment advice. Never pay an unknown person to unlock an earning opportunity.</div>
+ </div>
+</section>
+
+<footer>
+ <div class="wrap">
+  <strong>SPR DIGITAL INCOME ACADEMY</strong>
+  <p>SPR AI EDUTECH • Hosadurga, Karnataka, India</p>
+  <p>ಕಲಿಯಿರಿ • ಪ್ರಯೋಗಿಸಿ • ಸಂಪಾದಿಸಿ</p>
+  <p><a href="https://wa.me/917022070287" target="_blank" rel="noopener" style="color:#8beaf0;text-decoration:none">WhatsApp: 7022070287</a></p>
+  <p>© <span id="year"></span> SPR AI EDUTECH. Educational initiative.</p>
+ </div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+const langBtn=document.getElementById('langBtn');
+let currentLang='en';
+function setLanguage(lang){
+ currentLang=lang;
+ document.documentElement.lang=lang==='kn'?'kn':'en';
+ document.querySelectorAll('[data-en]').forEach(el=>{
+   const value=el.getAttribute(lang==='kn'?'data-kn':'data-en');
+   if(value!==null) el.innerHTML=value;
+ });
+ langBtn.textContent=lang==='en'?'ಕನ್ನಡ':'English';
+}
+langBtn.addEventListener('click',()=>setLanguage(currentLang==='en'?'kn':'en'));
+const menuBtn=document.getElementById('menuBtn');
+const navlinks=document.getElementById('navlinks');
+menuBtn.addEventListener('click',()=>navlinks.classList.toggle('open'));
+navlinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navlinks.classList.remove('open')));
+const clicks=document.getElementById('clicks'),rate=document.getElementById('rate'),commission=document.getElementById('commission');
+function calculate(){
+ const c=Number(clicks.value),r=Number(rate.value),v=Number(commission.value);
+ document.getElementById('clicksOut').textContent=c.toLocaleString('en-IN');
+ document.getElementById('rateOut').textContent=r+'%';
+ document.getElementById('result').textContent='₹'+Math.round(c*r/100*v).toLocaleString('en-IN');
+}
+[clicks,rate,commission].forEach(el=>el.addEventListener('input',calculate));
+calculate();
+document.getElementById('year').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
